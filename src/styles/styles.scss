@@ -1,0 +1,90 @@
+$background-color: #191e2d;
+$containers_color: #21273b;
+$display: grid;
+$borders: 10px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: $background-color;
+}
+
+.Container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: "main_result dashboard";
+  height: 100vh;
+  padding: 5rem;
+
+  .Container__result {
+    grid-area: main_result;
+    display: grid;
+    grid-template-rows: 5rem auto;
+    grid-template-areas:
+      "search_bar"
+      "results";
+    background-color: $containers_color;
+    border-radius: $borders;
+    .Search_bar {
+      grid-area: search_bar;
+      display: flex;
+      display: row;
+    }
+    .Results__pane {
+      grid-area: results;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  .Container__dashboard {
+    .highlights {
+      margin: 2rem 0 2rem 2rem;
+    }
+    grid-area: dashboard;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    .Dashboard__forecast {
+      @extend .Container__dashboard;
+      flex-direction: row;
+      justify-content: space-evenly;
+
+      .Forecast {
+        width: 13rem;
+        height: 20rem;
+        background-color: $containers_color;
+        border-radius: $borders;
+      }
+    }
+    .Dashboard__results {
+      @extend .Container__dashboard;
+
+      .Dashboard__results--row {
+        @extend .Container__dashboard;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-bottom: 2rem;
+
+        .Result__container {
+          width: 28rem;
+          height: 15rem;
+          background-color: $containers_color;
+          border-radius: $borders;
+        }
+      }
+    }
+  }
+}
+
+.imagen {
+  background-color: #21273b;
+}
