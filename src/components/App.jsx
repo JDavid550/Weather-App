@@ -1,57 +1,60 @@
 import React from 'react'
-import logo from '../images/partlycloudyday.png'
+import Container_result from './Container_result.jsx'
+import Dashboard_forecast from './Dashboard_forecast.jsx'
+import Dashboard_result from './Dashboard_results.jsx'
 
 class App extends React.Component{
+
+    constructor(props){
+        super(props)
+        this.state ={
+            loading:false,
+            error:null,
+            data:{}
+        }
+        this.API = 'https://api.openweathermap.org/data/2.5/weather?q=bogota&units=metric&appid=04796f77ba3f29c9fdadc0f4ed34314a'
+
+        this.fetchData = async()=>{
+
+            this.setState({loading:true})
+            try {
+                const response = await fetch(this.API)
+                const data = await response.json()
+                console.log(data)
+                this.setState({loading:false, data})
+            } catch (error) {
+                console.log('fetch error', error)
+            }
+            
+        }
+    }
+    
+    componentDidMount(){
+        this.fetchData()
+        
+    }
     render(){
+        
+        if (this.state.data.main == undefined) {
+            return <h1>Loading</h1>
+        }
+
         return <div className="Container">
-            <div className="Container__result">
-                <div className="Search_bar">
-                    <h2>Search</h2>
-                    <h2>Search Button</h2>
-                </div>
-                <div className="Results__pane">
-                    <img src={logo} alt=""/>
-                    <h1>Temp</h1>
-                    <h2>Description</h2>
-                    <h3>Date</h3>
-                    <h3>Credits</h3>
-                </div>
-            </div>
+
+            <Container_result 
+                Temperature = {this.state.data.main.temp}
+                Description = {this.state.data.weather[0].description} />
+
             <div className="Container__dashboard">
                 <h2 className="highlights">The next days forecast</h2>
-                <div className="Dashboard__forecast">
-                    <div className="Forecast">
-                        <h2>Forecast section</h2>
-                    </div>
-                    <div className="Forecast">
-                        <h2>Forecast section</h2>
-                    </div>
-                    <div className="Forecast">
-                        <h2>Forecast section</h2>
-                    </div>
-                    <div className="Forecast">
-                        <h2>Forecast section</h2>
-                    </div>
-                </div>
-                <div className="Dashboard__results">
-                    <h2 className="highlights">Today´s hightlights</h2>
-                    <div className="Dashboard__results--row">
-                        <div className="Result__container">
-                            <h2>Pressure</h2>
-                        </div>
-                        <div className="Result__container">
-                            <h2>Humidity</h2>   
-                        </div>
-                    </div>
-                    <div className="Dashboard__results--row">
-                        <div>
-                            <h2 className="Result__container">Visibility</h2>
-                        </div>
-                        <div className="Result__container">
-                            <h2>Air Pressure</h2>   
-                        </div>
-                    </div>
-                </div>
+                <hr className="line"/>
+                <Dashboard_forecast/>
+                <Dashboard_result 
+                    Pressure= {this.state.data.main.pressure}
+                    Humidity= {this.state.data.main.humidity}
+                    Clouds= {this.state.data.clouds.all}
+                    WindSpeed= {this.state.data.wind.speed}/>
+                
             </div>
         </div>
     }

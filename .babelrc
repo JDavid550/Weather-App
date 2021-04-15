@@ -2,5 +2,8 @@
     "presets":[
         "@babel/preset-env",
         "@babel/preset-react"
+    ],
+    "plugins": [
+        "@babel/plugin-transform-runtime" //Added to use asyn and await keywords I installed also "@babel/plugin-transform-runtime" https://stackoverflow.com/questions/53477466/react-referenceerror-regeneratorruntime-is-not-defined
     ]
 }

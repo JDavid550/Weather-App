@@ -1,5 +1,5 @@
-$background-color: #191e2d;
-$containers_color: #21273b;
+$background-color: #0f2027;
+$containers_color: linear-gradient(15deg, #13547a 0%, #80d0c7 100%); //#21273b;
 $display: grid;
 $borders: 10px;
 
@@ -14,14 +14,25 @@ html {
 }
 
 body {
-  background-color: $background-color;
+  background: $background-color; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .Container {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-areas: "main_result dashboard";
-  height: 100vh;
   padding: 5rem;
 
   .Container__result {
@@ -31,7 +42,7 @@ body {
     grid-template-areas:
       "search_bar"
       "results";
-    background-color: $containers_color;
+    background-image: $containers_color;
     border-radius: $borders;
     .Search_bar {
       grid-area: search_bar;
@@ -43,11 +54,18 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: space-evenly;
     }
   }
   .Container__dashboard {
     .highlights {
-      margin: 2rem 0 2rem 2rem;
+      margin: 2rem 0 1rem 2rem;
+      color: white;
+    }
+    .line {
+      margin: 0 0 2rem 2rem;
+      width: 10rem;
+      border-top: 1px solid yellow;
     }
     grid-area: dashboard;
     display: flex;
@@ -61,7 +79,7 @@ body {
       .Forecast {
         width: 13rem;
         height: 20rem;
-        background-color: $containers_color;
+        background-image: $containers_color;
         border-radius: $borders;
       }
     }
@@ -70,14 +88,15 @@ body {
 
       .Dashboard__results--row {
         @extend .Container__dashboard;
+        flex-wrap: wrap;
         flex-direction: row;
         justify-content: space-evenly;
         margin-bottom: 2rem;
 
         .Result__container {
-          width: 28rem;
+          width: 33rem;
           height: 15rem;
-          background-color: $containers_color;
+          background-image: $containers_color;
           border-radius: $borders;
         }
       }
