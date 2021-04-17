@@ -11,11 +11,12 @@ class App extends React.Component{
             loading:false,
             error:null,
             data:{},
+            secondData :{},
             parameter: 'Bogota',
             date :{
                 date:new Date().toDateString(),
                 time: new Date().toLocaleTimeString()
-            }  
+            }, 
             
         }
 
@@ -28,10 +29,11 @@ class App extends React.Component{
                 const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.parameter}&units=metric&appid=04796f77ba3f29c9fdadc0f4ed34314a`)
                 const data = await response.json()
                 console.log(data)
-                const secondResponse = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&exclude=hourly,current,hourly,alerts,minutely&units=metric&appid=04796f77ba3f29c9fdadc0f4ed34314a`)
+                this.setState({loading:false, data:data})
+                const secondResponse = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.data.coord.lat}&lon=${this.state.data.coord.lon}&exclude=hourly,current,hourly,alerts,minutely&units=metric&appid=04796f77ba3f29c9fdadc0f4ed34314a`)
                 const secondData = await secondResponse.json()
                 console.log(secondData)
-                this.setState({loading:false, data})
+                this.setState({secondData:secondData})
             } catch (error) {
                 console.log('fetch error', error)
             }
@@ -46,16 +48,17 @@ class App extends React.Component{
             this.fetchData()
         }
         
-        
     }
     
     componentDidMount(){
         this.fetchData()
         
     }
+
+    
     render(){
         
-        if (this.state.data.main == undefined) {
+        if (this.state.data.main == undefined || this.state.secondData.daily == undefined || this.state.data.coord == undefined) {
             return <h1>Loading</h1>
         }
 
@@ -73,7 +76,13 @@ class App extends React.Component{
             <div className="Container__dashboard">
                 <h2 className="highlights">The next days forecast</h2>
                 <hr className="line"/>
-                <Dashboard_forecast/>
+
+                <Dashboard_forecast
+                    Day1 = {this.state.secondData.daily[0].temp.day} 
+                    Day2 = {this.state.secondData.daily[1].temp.day}
+                    Day3 = {this.state.secondData.daily[2].temp.day}
+                    Day4 = {this.state.secondData.daily[3].temp.day}
+                    />
 
                 <Dashboard_result 
                     Pressure= {this.state.data.main.pressure || 'Pressure'}
