@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../images/partlycloudyday.png'
+
 
 
 class Container_result extends React.Component{
@@ -16,7 +16,7 @@ class Container_result extends React.Component{
             
         </div>
         <div className="Results__pane">
-            <img src={logo} alt="Weather Image"/>
+            <img className="WeatherImage" src = {`http://openweathermap.org/img/wn/${this.props.Icon}@2x.png`}  alt="Weather Image"/>
             <h1>{this.props.Temperature}</h1>
             <h2>{this.props.Description}</h2>
             <div className="Date">

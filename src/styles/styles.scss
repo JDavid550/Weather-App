@@ -55,6 +55,10 @@ body {
       flex-direction: column;
       align-items: center;
       justify-content: space-evenly;
+      .WeatherImage {
+        width: 150px;
+        height: 150px;
+      }
       .Date {
         display: flex;
         flex-direction: column;

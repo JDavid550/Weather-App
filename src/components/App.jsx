@@ -1,7 +1,10 @@
 import React from 'react'
+
 import Container_result from './Container_result.jsx'
 import Dashboard_forecast from './Dashboard_forecast.jsx'
 import Dashboard_result from './Dashboard_results.jsx'
+
+
 
 class App extends React.Component{
 
@@ -65,6 +68,7 @@ class App extends React.Component{
         return <div className="Container">
 
             <Container_result 
+                Icon = {this.state.data.weather[0].icon}
                 Temperature = {this.state.data.main.temp || 'Temperature'} 
                 Description = {this.state.data.weather[0].description || 'Description'}
                 City = {this.state.parameter}
@@ -78,6 +82,7 @@ class App extends React.Component{
                 <hr className="line"/>
 
                 <Dashboard_forecast
+                    // Days = {this.state.data.daily}
                     Day1 = {this.state.secondData.daily[0].temp.day} 
                     Day2 = {this.state.secondData.daily[1].temp.day}
                     Day3 = {this.state.secondData.daily[2].temp.day}
