@@ -17,15 +17,13 @@ class Container_result extends React.Component{
         </div>
         <div className="Results__pane">
             <img className="WeatherImage" src = {`http://openweathermap.org/img/wn/${this.props.Icon}@2x.png`}  alt="Weather Image"/>
-            <h1>{this.props.Temperature}</h1>
+            <h1>{this.props.Temperature}ºC</h1>
             <h2>{this.props.Description}</h2>
             <div className="Date">
             <h3>{this.props.Date}</h3>
             <h3>{this.props.Time}</h3> 
             </div>
-            
-
-            <h3>Credits</h3>
+            <h3>A J.David.A.Sarmiento App</h3>
         </div>
     </div>
 

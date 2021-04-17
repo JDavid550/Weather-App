@@ -3,6 +3,16 @@ $containers_color: linear-gradient(15deg, #13547a 0%, #80d0c7 100%); //#21273b;
 $display: grid;
 $borders: 10px;
 
+//Para fonts ver config//
+/* @font-face {
+  font-family: "questrial";
+  src: url("../assets/fonts/questrial-v13-latin-regular.woff") format("woff"),
+    url("../assets/fonts/questrial-v13-latin-regular.woff2") format("woff2");
+}
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +23,25 @@ html {
   font-size: 62.5%;
 }
 
-body {
+h2,
+h1,
+h3 {
+  font-family: "Questrial", sans-serif;
+  color: $background-color;
+}
+
+h1 {
+  font-size: 10rem;
+}
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+.Container {
   background: $background-color; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to bottom,
@@ -27,14 +55,10 @@ body {
     #203a43,
     #0f2027
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.Container {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-areas: "main_result dashboard";
   padding: 5rem;
-
   .Container__result {
     grid-area: main_result;
     display: grid;
@@ -90,6 +114,9 @@ body {
         height: 20rem;
         background-image: $containers_color;
         border-radius: $borders;
+        @extend .Container__dashboard;
+        justify-content: center;
+        align-items: center;
       }
     }
     .Dashboard__results {
@@ -107,6 +134,10 @@ body {
           height: 15rem;
           background-image: $containers_color;
           border-radius: $borders;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
       }
     }

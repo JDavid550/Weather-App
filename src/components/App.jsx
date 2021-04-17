@@ -3,6 +3,7 @@ import React from 'react'
 import Container_result from './Container_result.jsx'
 import Dashboard_forecast from './Dashboard_forecast.jsx'
 import Dashboard_result from './Dashboard_results.jsx'
+import Loader from './Loader.jsx'
 
 
 
@@ -62,7 +63,7 @@ class App extends React.Component{
     render(){
         
         if (this.state.data.main == undefined || this.state.secondData.daily == undefined || this.state.data.coord == undefined) {
-            return <h1>Loading</h1>
+            return <Loader/>
         }
 
         return <div className="Container">
@@ -75,7 +76,10 @@ class App extends React.Component{
                 onChange = {this.handleChange}
                 onClick = {this.handleClick}
                 Date = {this.state.date.date}
-                Time = {this.state.date.time} />
+                Time = {this.state.date.time}
+                Loading = {this.state.loading}
+                />
+                
 
             <div className="Container__dashboard">
                 <h2 className="highlights">The next days forecast</h2>
@@ -83,10 +87,14 @@ class App extends React.Component{
 
                 <Dashboard_forecast
                     // Days = {this.state.data.daily}
-                    Day1 = {this.state.secondData.daily[0].temp.day} 
+                    Day1 = {this.state.secondData.daily[0].temp.day}
+                    Icon1 ={this.state.secondData.daily[0].weather[0].icon} 
                     Day2 = {this.state.secondData.daily[1].temp.day}
+                    Icon2 ={this.state.secondData.daily[1].weather[0].icon} 
                     Day3 = {this.state.secondData.daily[2].temp.day}
+                    Icon3 ={this.state.secondData.daily[2].weather[0].icon} 
                     Day4 = {this.state.secondData.daily[3].temp.day}
+                    Icon4 ={this.state.secondData.daily[3].weather[0].icon} 
                     />
 
                 <Dashboard_result 
