@@ -2,6 +2,7 @@ $background-color: #0f2027;
 $containers_color: linear-gradient(15deg, #13547a 0%, #80d0c7 100%); //#21273b;
 $display: grid;
 $borders: 10px;
+$color-button: #767b91;
 
 //Para fonts ver config//
 /* @font-face {
@@ -41,6 +42,11 @@ h3 {
   font-size: 2rem;
 }
 
+p {
+  font-family: "Questrial", sans-serif;
+  font-size: 1rem;
+}
+
 .Container {
   background: $background-color; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -68,10 +74,44 @@ h3 {
       "results";
     background-image: $containers_color;
     border-radius: $borders;
+    padding: 4rem;
     .Search_bar {
       grid-area: search_bar;
       display: flex;
       display: row;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-top: 4rem;
+      .Search_bar-Input {
+        width: 20rem;
+        border-radius: 30px;
+        box-shadow: 1px 3px 8px $color-button;
+        border: none;
+        height: 4rem;
+        padding-left: 1.6rem;
+        background-color: whitesmoke;
+        font-family: "Questrial", sans-serif;
+      }
+      .Search_bar-Button {
+        height: 40px;
+        width: 40px;
+        background-color: $color-button;
+        color: whitesmoke;
+        border-radius: 30px;
+        border: none;
+        box-shadow: 1px 1px 3px $color-button;
+        .Search_bar-Button--Icon {
+          width: 20px;
+          height: 20px;
+        }
+      }
+      .Search_bar-Button:hover {
+        cursor: pointer;
+      }
+      .Search_bar-Button:focus {
+        outline: none;
+        border: none;
+      }
     }
     .Results__pane {
       grid-area: results;
@@ -87,6 +127,9 @@ h3 {
         display: flex;
         flex-direction: column;
         align-items: center;
+      }
+      .Description {
+        text-transform: capitalize;
       }
     }
   }
@@ -146,4 +189,12 @@ h3 {
 
 .imagen {
   background-color: #21273b;
+}
+.Search_bar-Input:focus {
+  outline: none;
+  border: none;
+}
+.Search_bar-Input:active {
+  outline: none;
+  border: none;
 }

@@ -10,24 +10,24 @@ class Dashboard_result extends React.Component{
         <div className="Dashboard__results--row">
             <div className="Result__container">
                 
-                <h2>{this.props.Pressure}</h2>
+                <h2>{this.props.Pressure} hPa</h2>
                 <h3>Pressure</h3>
             </div>
             <div className="Result__container">
                 
-                <h2>{this.props.Humidity}</h2>   
+                <h2>{this.props.Humidity} %</h2>   
                 <h3>Humidity</h3>
             </div>
         </div>
         <div className="Dashboard__results--row">
             <div className="Result__container">
                 
-                <h2>{this.props.Clouds}</h2>
+                <h2>{this.props.Clouds} %</h2>
                 <h3>Clouds</h3>
             </div>
             <div className="Result__container">
                 
-                <h2>{this.props.WindSpeed}</h2>
+                <h2>{this.props.WindSpeed} m/s</h2>
                 <h3>Wind Speed</h3>
             </div>
         </div>

@@ -51,6 +51,12 @@ class App extends React.Component{
         this.handleClick = () => {
             this.fetchData()
         }
+
+        this.handleKeyDown = (e)=>{
+            if (e.key === 'Enter') {
+                this.fetchData()
+            }
+        }
         
     }
     
@@ -75,6 +81,7 @@ class App extends React.Component{
                 City = {this.state.parameter}
                 onChange = {this.handleChange}
                 onClick = {this.handleClick}
+                onKeyDown = {this.handleKeyDown}
                 Date = {this.state.date.date}
                 Time = {this.state.date.time}
                 Loading = {this.state.loading}
