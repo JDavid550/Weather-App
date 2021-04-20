@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 import Container_result from './Container_result.jsx'
 import Dashboard_forecast from './Dashboard_forecast.jsx'
@@ -40,6 +41,7 @@ class App extends React.Component{
                 this.setState({secondData:secondData})
             } catch (error) {
                 console.log('fetch error', error)
+                this.setState({loading:false ,error:error})
             }
             
         }
@@ -68,9 +70,18 @@ class App extends React.Component{
     
     render(){
         
+        if (this.state.data.cod == '404') {
+            return <div className="ErrorPage">
+                <h1 className="ErrorPage__title">Error 404</h1>
+                <h1 className="ErrorPage__title">Page Not Found</h1>
+                <a className="ErrorPage__button">Search another city</a>
+            </div>
+        }
+
         if (this.state.data.main == undefined || this.state.secondData.daily == undefined || this.state.data.coord == undefined) {
             return <Loader/>
         }
+        
 
         return <div className="Container">
 
