@@ -99,12 +99,20 @@ class Main extends React.Component{
             <div className="Container__dashboard">
                 <h2 className="highlights">The next days forecast</h2>
                 <hr className="line"/>
-            <div className="Dashboard__forecast">   
+           {/*  <div className="Dashboard__forecast">   */} 
                 <Dashboard_forecast
-                        Days = {this.state.secondData.daily || [1,2,3,4]}
+                        //Days = {this.state.secondData.daily}
+                        Day1 = {this.state.secondData.daily[0].temp.day}
+                        Icon1 ={this.state.secondData.daily[0].weather[0].icon} 
+                        Day2 = {this.state.secondData.daily[1].temp.day}
+                        Icon2 ={this.state.secondData.daily[1].weather[0].icon} 
+                        Day3 = {this.state.secondData.daily[2].temp.day}
+                        Icon3 ={this.state.secondData.daily[2].weather[0].icon} 
+                        Day4 = {this.state.secondData.daily[3].temp.day}
+                        Icon4 ={this.state.secondData.daily[3].weather[0].icon} 
                         
                 />
-            </div>
+           {/*  </div> */}
                 
 
                 <Dashboard_result 
