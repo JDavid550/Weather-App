@@ -5,7 +5,7 @@ import Container_result from '../components/Container_result.jsx'
 import Dashboard_forecast from '../components/Dashboard_forecast.jsx'
 import Dashboard_result from '../components/Dashboard_results.jsx'
 import Loader from '../components/Loader.jsx'
-import Error from './NotFound.jsx'
+
 
 
 class Main extends React.Component{
@@ -21,7 +21,7 @@ class Main extends React.Component{
             date :{
                 date:new Date().toDateString(),
                 time: new Date().toLocaleTimeString()
-            }, 
+            },
             
         }
 
@@ -47,7 +47,9 @@ class Main extends React.Component{
         }
 
         this.handleChange = (e)=>{
+            console.log(e)
             this.setState({parameter: e.target.value})
+            
         }
 
         this.handleClick = () => {
@@ -66,7 +68,6 @@ class Main extends React.Component{
         this.fetchData()
         
     }
-
     
     render(){
         
@@ -98,18 +99,12 @@ class Main extends React.Component{
             <div className="Container__dashboard">
                 <h2 className="highlights">The next days forecast</h2>
                 <hr className="line"/>
-
+            <div className="Dashboard__forecast">   
                 <Dashboard_forecast
-                    // Days = {this.state.data.daily}
-                    Day1 = {this.state.secondData.daily[0].temp.day}
-                    Icon1 ={this.state.secondData.daily[0].weather[0].icon} 
-                    Day2 = {this.state.secondData.daily[1].temp.day}
-                    Icon2 ={this.state.secondData.daily[1].weather[0].icon} 
-                    Day3 = {this.state.secondData.daily[2].temp.day}
-                    Icon3 ={this.state.secondData.daily[2].weather[0].icon} 
-                    Day4 = {this.state.secondData.daily[3].temp.day}
-                    Icon4 ={this.state.secondData.daily[3].weather[0].icon} 
-                    />
+                        Days = {this.state.secondData.daily || [1,2,3,4]}
+                />
+            </div>
+                
 
                 <Dashboard_result 
                     Pressure= {this.state.data.main.pressure || 'Pressure'}
