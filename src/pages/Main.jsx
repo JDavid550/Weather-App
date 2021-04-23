@@ -102,6 +102,7 @@ class Main extends React.Component{
             <div className="Dashboard__forecast">   
                 <Dashboard_forecast
                         Days = {this.state.secondData.daily || [1,2,3,4]}
+                        
                 />
             </div>
                 
