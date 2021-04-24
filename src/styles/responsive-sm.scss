@@ -1,0 +1,77 @@
+$background-color: #0f2027;
+
+
+@media (max-width: 900px) {
+  body{
+    background: $background-color; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+  }
+  .Container  {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "main_result"
+      "dashboard";
+
+    padding: 0;
+    height:100%;
+    .Container__result {
+      width: 100vw;
+      height: 100vh + 30vh;
+      /* .Search_bar-Input {
+        width: 20rem;
+      } */
+    }
+    .Container__dashboard {
+      padding: 0;
+      display: flex;
+      flex-direction: column-reverse;
+      .Dashboard__forecast {
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+        padding: 0 2rem;
+      }
+    }
+    .Dashboard__results--row {
+      width: 100vw;
+    }
+    .Forecast {
+      margin-bottom: 2rem;
+      margin: 0.5rem;
+    }
+  }
+}
+
+///Añadir responsive para altural mayores a 360 px para encajar el results container y ocupar toda la pantall en la iPad Pro
+
+
+@media (min-width:1300px){
+  .Container{
+    height:100vh;
+  }
+  .Result__container{
+    width:50rem !important;
+    height:20rem !important;
+  }
+  .Forecast{
+    width:18rem !important;
+    height:25rem !important;
+  }
+  
+}
+
+@media (min-height:1000px){
+  .Container{
+    height:100vh;
+  }
+}
