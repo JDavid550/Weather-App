@@ -25,7 +25,7 @@ class Main extends React.Component{
             
         }
 
-        this.API_ID = process.env.API_ID
+        this.API_ID = process.env.REACT_APP_API_ID
 
         this.fetchData = async()=>{
 
