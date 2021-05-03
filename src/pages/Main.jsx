@@ -25,19 +25,19 @@ class Main extends React.Component{
             
         }
 
-        //this.API = `https://api.openweathermap.org/data/2.5/weather?q=bogota&units=metric&appid=04796f77ba3f29c9fdadc0f4ed34314a`
+        this.API_ID = process.env.API_ID
 
         this.fetchData = async()=>{
 
             this.setState({loading:true})
             try {
-                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.parameter}&units=metric&appid=04796f77ba3f29c9fdadc0f4ed34314a`)
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.parameter}&units=metric&appid=${this.API_ID}`)
                 const data = await response.json()
-                console.log(data)
+                //console.log(data)
                 this.setState({loading:false, data:data})
-                const secondResponse = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.data.coord.lat}&lon=${this.state.data.coord.lon}&exclude=hourly,current,hourly,alerts,minutely&units=metric&appid=04796f77ba3f29c9fdadc0f4ed34314a`)
+                const secondResponse = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.data.coord.lat}&lon=${this.state.data.coord.lon}&exclude=hourly,current,hourly,alerts,minutely&units=metric&appid=${this.API_ID}`)
                 const secondData = await secondResponse.json()
-                console.log(secondData)
+                //console.log(secondData)
                 this.setState({secondData:secondData})
             } catch (error) {
                 console.log('fetch error', error)
@@ -47,7 +47,7 @@ class Main extends React.Component{
         }
 
         this.handleChange = (e)=>{
-            console.log(e)
+            //console.log(e)
             this.setState({parameter: e.target.value})
             
         }

@@ -3,17 +3,18 @@ $containers_color: linear-gradient(15deg, #13547a 0%, #80d0c7 100%); //#21273b;
 $display: grid;
 $borders: 10px;
 $color-button: #767b91;
-$font: "Questrial", sans-serif;
+$font:"Questrial"; //"Questrial", sans-serif;
 
 //Para fonts ver config//
-/* @font-face {
-  font-family: "questrial";
-  src: url("../assets/fonts/questrial-v13-latin-regular.woff") format("woff"),
-    url("../assets/fonts/questrial-v13-latin-regular.woff2") format("woff2");
-}
- */
 
-@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+@font-face{
+  font-family :"Questrial";
+  src: url("../assets/fonts/questrial-v13-latin-regular.woff") format("woff"),
+  url("../assets/fonts/questrial-v13-latin-regular.woff2") format("woff2")
+}
+
+
+//@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
 
 * {
   margin: 0;
@@ -93,7 +94,7 @@ p {
         height: 4rem;
         padding-left: 1.6rem;
         background-color: whitesmoke;
-        font-family: "Questrial", sans-serif;
+        font-family: $font;
       }
       .Search_bar-Button {
         height: 40px;

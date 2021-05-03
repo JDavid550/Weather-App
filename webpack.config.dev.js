@@ -2,13 +2,14 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
     entry:'./src/index.js',
     output:{
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        //assetModuleFileName : 'assets/fonts/[hash][ext][query]'
+        
     },
 
     resolve:{
@@ -42,20 +43,7 @@ module.exports = {
             test: /\.png/,
             type: "asset/resource"
         },
-        /* {
-            test: /\.(woff|woff2)$/,
-            use: {
-                loader : 'url-loader',
-                options : {
-                    limit: 10000,
-                    mimetype: "application/font-woff",
-                    name : "[name].[ext]",
-                    outputPath: "./assets/fonts/",
-                    publicPath: "./assets/fonts/",
-                    esModule :false
-                }
-            }
-        } */
+        
         ]
     },
     plugins:[
@@ -65,7 +53,8 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename:'[name].css'
-        })
+        }),
+        new Dotenv()
     ],
     devServer:{
         contentBase: path.join(__dirname,'dist'),
