@@ -57,7 +57,7 @@ $background-color: #0f2027;
 
 @media (min-width:1300px){
   .Container{
-    height:100vh;
+    height:fit-content;
   }
   .Result__container{
     width:50rem !important;
@@ -73,5 +73,11 @@ $background-color: #0f2027;
 @media (min-height:1000px){
   .Container{
     height:100vh;
+  }
+}
+
+@media (min-height:900px)and (max-height:1300px){
+  h3 {
+    font-size: 1.5rem;
   }
 }
