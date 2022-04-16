@@ -41,12 +41,17 @@ h2 {
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 p {
   font-family: $font;
   font-size: 1rem;
+}
+
+body{
+  height: 100vh;
+  width: 100vw;
 }
 
 .Container {
@@ -67,7 +72,6 @@ p {
   grid-template-columns: 1fr 2fr;
   grid-template-areas: "main_result dashboard";
   padding: 5rem;
-  height: 100vh;
   width: 100vw;
   .Container__result {
     grid-area: main_result;
@@ -155,12 +159,13 @@ p {
       @extend .Container__dashboard;
       flex-direction: row;
       justify-content: space-evenly;
-
+      flex-wrap: wrap;
       .Forecast {
         width: 13rem;
         height: 20rem;
         background-image: $containers_color;
         border-radius: $borders;
+        margin-top: 2rem;
         @extend .Container__dashboard;
         justify-content: center;
         align-items: center;
@@ -171,13 +176,13 @@ p {
 
       .Dashboard__results--row {
         @extend .Container__dashboard;
-        //flex-wrap: wrap;
+        flex-wrap: wrap;
         flex-direction: row;
         justify-content: space-evenly;
         margin-bottom: 2rem;
 
         .Result__container {
-          width: 30rem;
+          width: 20rem;
           height: 15rem;
           background-image: $containers_color;
           border-radius: $borders;
