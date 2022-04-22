@@ -65,7 +65,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![alt text](https://raw.githubusercontent.com/JDavid550/Weather-App/master/screenshot.png)
 
 This is a personal project made for fun. It consumes the OpenWeather API to get the data from the city you request.
 
